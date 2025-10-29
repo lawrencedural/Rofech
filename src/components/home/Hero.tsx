@@ -27,7 +27,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-6 tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -38,7 +38,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl font-light mb-12 max-w-4xl mx-auto"
+            className="text-lg md:text-xl lg:text-2xl font-light mb-12 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}

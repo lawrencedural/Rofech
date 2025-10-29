@@ -24,7 +24,7 @@ const SectionTitle = ({ title, subtitle, align = 'center' }: SectionTitleProps) 
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl lg:text-5xl font-heading mb-4"
+        className="text-2xl md:text-3xl lg:text-4xl font-heading mb-4"
       >
         {title}
       </motion.h2>

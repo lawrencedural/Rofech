@@ -35,7 +35,7 @@ const FeaturedProjects = () => {
                   <div className="project-card-overlay">
                     <div className="text-white w-full">
                       <div className="h-px w-12 bg-rofech-yellow mb-4"></div>
-                      <h3 className="font-heading font-bold text-3xl mb-2 tracking-tight">{project.name}</h3>
+                      <h3 className="font-heading font-bold text-2xl mb-2">{project.name}</h3>
                       <p className="text-sm uppercase tracking-[0.2em] text-gray-300 mb-1">{project.type}</p>
                       <p className="text-sm text-gray-400">{project.location}</p>
                       <div className="mt-6 inline-flex items-center gap-2 text-rofech-yellow font-bold uppercase text-xs tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
