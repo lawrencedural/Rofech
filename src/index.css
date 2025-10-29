@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .btn-primary {
+    @apply bg-rofech-yellow text-rofech-black px-6 py-3 rounded-none font-heading font-semibold 
+    uppercase tracking-wider text-sm transition-all duration-300 hover:bg-rofech-black hover:text-rofech-yellow 
+    hover:shadow-[0_0_30px_rgba(255,237,0,0.6)] transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-rofech-yellow text-rofech-yellow px-6 py-3 rounded-none 
+    font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 
+    hover:bg-rofech-yellow hover:text-rofech-black;
+  }
+
+  .yellow-underline {
+    @apply relative after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-0.5 after:bg-rofech-yellow after:transition-all after:duration-300 
+    hover:after:w-full;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden cursor-pointer;
+  }
+
+  .project-card-overlay {
+    @apply absolute inset-0 bg-rofech-yellow opacity-0 group-hover:opacity-90 
+    transition-opacity duration-300 flex items-center justify-center;
+  }
+
+  .loading-skeleton {
+    @apply animate-pulse bg-gray-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFED00;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6d500;
+}
+
+/* Lazy load image transition */
+.lazy-load-image-background {
+  display: block !important;
+}
+
+.lazy-load-image-loaded {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
