@@ -41,7 +41,7 @@ const Header = () => {
               alt="ROFECH Logo" 
               className="w-10 h-10 object-cover transform group-hover:rotate-45 transition-transform duration-300"
             />
-            <span className={`font-heading font-bold text-xl transition-colors ${
+            <span className={`font-heading font-bold text-xl tracking-tight transition-colors ${
               isScrolled ? 'text-rofech-black' : 'text-white'
             }`}>
               ROFECH
@@ -55,12 +55,12 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `yellow-underline pb-1 font-medium transition-colors ${
+                  `pb-1 font-semibold text-sm uppercase tracking-[0.15em] transition-all duration-300 relative ${
                     isActive
-                      ? 'text-rofech-yellow'
+                      ? 'text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-rofech-yellow'
                       : isScrolled
-                      ? 'text-rofech-black hover:text-rofech-yellow'
-                      : 'text-white hover:text-rofech-yellow'
+                      ? 'text-rofech-black hover:text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
+                      : 'text-white hover:text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
                   }`
                 }
               >

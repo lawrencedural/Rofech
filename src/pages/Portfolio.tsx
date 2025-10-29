@@ -52,10 +52,10 @@ const Portfolio = () => {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-6 py-3 font-heading font-bold uppercase text-sm tracking-wider transition-all duration-300 ${
+                className={`px-8 py-3 font-heading font-bold uppercase text-xs tracking-[0.2em] transition-all duration-500 ${
                   activeFilter === category
                     ? 'bg-rofech-yellow text-rofech-black'
-                    : 'bg-white text-rofech-black border-2 border-rofech-black hover:bg-rofech-black hover:text-white'
+                    : 'bg-white text-rofech-black border-2 border-gray-200 hover:border-rofech-black hover:bg-rofech-black hover:text-white'
                 }`}
               >
                 {category}
@@ -74,28 +74,32 @@ const Portfolio = () => {
                 layout
               >
                 <Link to={`/portfolio/${project.id}`} className="project-card block group">
-                  <div className="relative aspect-[4/5] overflow-hidden">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
                     <img
                       src={project.thumbnail}
                       alt={project.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="project-card-overlay">
-                      <div className="text-center text-rofech-black p-6">
-                        <h3 className="font-heading font-bold text-2xl mb-2">{project.name}</h3>
-                        <p className="text-sm uppercase tracking-wider mb-2">{project.type}</p>
-                        <p className="text-sm mb-1">{project.location}</p>
-                        <p className="text-sm">{project.year}</p>
-                        <div className="mt-4 inline-block border-2 border-rofech-black px-6 py-2 font-bold uppercase text-sm hover:bg-rofech-black hover:text-rofech-yellow transition-colors">
-                          View Details
+                      <div className="text-white w-full">
+                        <div className="h-px w-12 bg-rofech-yellow mb-4"></div>
+                        <h3 className="font-heading font-bold text-3xl mb-2 tracking-tight">{project.name}</h3>
+                        <p className="text-sm uppercase tracking-[0.2em] text-gray-300 mb-1">{project.type}</p>
+                        <p className="text-sm text-gray-400 mb-1">{project.location}</p>
+                        <p className="text-xs text-gray-500">{project.year}</p>
+                        <div className="mt-6 inline-flex items-center gap-2 text-rofech-yellow font-bold uppercase text-xs tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
+                          View Project
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-4">
-                    <h3 className="font-heading font-bold text-xl mb-1">{project.name}</h3>
-                    <p className="text-gray-600 text-sm">{project.type}</p>
-                    <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                  <div className="mt-6">
+                    <h3 className="font-heading font-bold text-xl mb-1 tracking-tight">{project.name}</h3>
+                    <p className="text-gray-500 text-sm uppercase tracking-[0.15em]">{project.type}</p>
+                    <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                       <span>{project.location}</span>
                       <span>•</span>
                       <span>{project.year}</span>

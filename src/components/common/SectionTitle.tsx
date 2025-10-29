@@ -24,7 +24,7 @@ const SectionTitle = ({ title, subtitle, align = 'center' }: SectionTitleProps) 
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl lg:text-6xl font-heading mb-4"
+        className="text-3xl md:text-4xl lg:text-5xl font-heading mb-4"
       >
         {title}
       </motion.h2>
@@ -33,14 +33,14 @@ const SectionTitle = ({ title, subtitle, align = 'center' }: SectionTitleProps) 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+          className={`text-base md:text-lg text-gray-600 max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}
         >
           {subtitle}
         </motion.p>
       )}
       <motion.div
         initial={{ width: 0 }}
-        animate={isInView ? { width: 100 } : { width: 0 }}
+        animate={isInView ? { width: 80 } : { width: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         className={`h-1 bg-rofech-yellow mt-6 ${align === 'center' ? 'mx-auto' : ''}`}
       />

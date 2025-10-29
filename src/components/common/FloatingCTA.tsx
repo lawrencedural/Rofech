@@ -29,7 +29,7 @@ const FloatingCTA = () => {
         >
           <Link
             to="/contact"
-            className="block bg-rofech-yellow text-rofech-black px-5 py-2.5 font-heading font-semibold uppercase text-xs tracking-wider shadow-lg hover:shadow-[0_0_30px_rgba(255,237,0,0.6)] transition-all duration-300 hover:scale-105"
+            className="block bg-rofech-yellow text-rofech-black px-6 py-3 font-heading font-semibold uppercase text-sm tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Contact
           </Link>

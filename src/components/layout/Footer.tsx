@@ -5,49 +5,49 @@ const Footer = () => {
 
   return (
     <footer className="bg-rofech-black text-white">
-      <div className="section-container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="section-container py-8 md:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 mb-8 items-start">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center space-x-2 mb-4 lg:mb-6">
               <img 
                 src="/images/logo-wo-name.jpg" 
                 alt="ROFECH Logo" 
                 className="w-10 h-10 object-cover"
               />
-              <span className="font-heading font-bold text-xl">ROFECH</span>
+              <span className="font-heading font-bold text-lg lg:text-xl">ROFECH</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Creating Timeless Tropical Modern Homes. Specializing in contemporary residential architecture.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="font-heading font-bold text-base lg:text-lg mb-4 lg:mb-6">Quick Links</h3>
+            <ul className="space-y-2.5">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm">
+                <Link to="/" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm">
+                <Link to="/portfolio" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm block">
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm">
+                <Link to="/about" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm block">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm">
+                <Link to="/services" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm block">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm">
+                <Link to="/contact" className="text-gray-400 hover:text-rofech-yellow transition-colors text-sm block">
                   Contact
                 </Link>
               </li>
@@ -56,8 +56,8 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Services</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h3 className="font-heading font-bold text-base lg:text-lg mb-4 lg:mb-6">Services</h3>
+            <ul className="space-y-2.5 text-sm text-gray-400">
               <li>Architectural Design</li>
               <li>3D Visualization</li>
               <li>Development & Build</li>
@@ -67,22 +67,22 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Contact</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h3 className="font-heading font-bold text-base lg:text-lg mb-4 lg:mb-6">Contact</h3>
+            <ul className="space-y-2.5 text-sm text-gray-400">
               <li>Metro Manila, Philippines</li>
               <li>
-                <a href="mailto:info@rofech.com" className="hover:text-rofech-yellow transition-colors">
+                <a href="mailto:info@rofech.com" className="hover:text-rofech-yellow transition-colors block">
                   info@rofech.com
                 </a>
               </li>
               <li>
-                <a href="tel:+639123456789" className="hover:text-rofech-yellow transition-colors">
+                <a href="tel:+639123456789" className="hover:text-rofech-yellow transition-colors block">
                   +63 912 345 6789
                 </a>
               </li>
             </ul>
             {/* Social Media */}
-            <div className="flex space-x-4 mt-4">
+            <div className="flex space-x-4 mt-5 lg:mt-6">
               <a href="#" className="text-gray-400 hover:text-rofech-yellow transition-colors" aria-label="Facebook">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -103,9 +103,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; {currentYear} ROFECH design & development. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+        <div className="border-t border-gray-800 pt-6 lg:pt-8 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm text-gray-400 gap-4">
+          <p className="text-center sm:text-left">&copy; {currentYear} ROFECH design & development. All rights reserved.</p>
+          <div className="flex space-x-4 sm:space-x-6">
             <a href="#" className="hover:text-rofech-yellow transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-rofech-yellow transition-colors">Terms of Service</a>
           </div>

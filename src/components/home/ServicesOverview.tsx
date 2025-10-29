@@ -23,7 +23,7 @@ const ServicesOverview = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white p-8 hover:shadow-xl transition-shadow duration-300 border-l-4 border-transparent hover:border-rofech-yellow flex flex-col h-full"
+              className="bg-white p-8 hover:shadow-xl transition-all duration-300 border-l-4 border-transparent hover:border-rofech-yellow flex flex-col h-full"
             >
               <h3 className="font-heading font-bold text-xl mb-3">{service.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
@@ -31,7 +31,7 @@ const ServicesOverview = () => {
               </p>
               <Link
                 to="/services"
-                className="text-rofech-black font-semibold text-xs uppercase tracking-wider yellow-underline inline-block pb-1 mt-auto"
+                className="text-rofech-black font-semibold text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 mt-auto"
               >
                 Learn More →
               </Link>

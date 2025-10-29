@@ -33,12 +33,16 @@ const FeaturedProjects = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="project-card-overlay">
-                    <div className="text-center text-rofech-black p-6">
-                      <h3 className="font-heading font-bold text-2xl mb-2">{project.name}</h3>
-                      <p className="text-sm uppercase tracking-wider mb-2">{project.type}</p>
-                      <p className="text-sm">{project.location}</p>
-                      <div className="mt-4 inline-block border-2 border-rofech-black px-6 py-2 font-bold uppercase text-sm hover:bg-rofech-black hover:text-rofech-yellow transition-colors">
-                        View Details
+                    <div className="text-white w-full">
+                      <div className="h-px w-12 bg-rofech-yellow mb-4"></div>
+                      <h3 className="font-heading font-bold text-3xl mb-2 tracking-tight">{project.name}</h3>
+                      <p className="text-sm uppercase tracking-[0.2em] text-gray-300 mb-1">{project.type}</p>
+                      <p className="text-sm text-gray-400">{project.location}</p>
+                      <div className="mt-6 inline-flex items-center gap-2 text-rofech-yellow font-bold uppercase text-xs tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
+                        View Project
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                       </div>
                     </div>
                   </div>

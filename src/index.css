@@ -9,10 +9,22 @@
 
   body {
     @apply font-sans text-gray-900 antialiased;
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    line-height: 1.2;
   }
 }
 
@@ -26,13 +38,13 @@
   }
 
   .btn-primary {
-    @apply bg-rofech-yellow text-rofech-black px-6 py-3 rounded-none font-heading font-semibold 
+    @apply bg-rofech-yellow text-rofech-black px-8 py-3.5 font-heading font-semibold 
     uppercase tracking-wider text-sm transition-all duration-300 hover:bg-rofech-black hover:text-rofech-yellow 
-    hover:shadow-[0_0_30px_rgba(255,237,0,0.6)] transform hover:scale-105;
+    hover:shadow-lg;
   }
 
   .btn-secondary {
-    @apply border-2 border-rofech-yellow text-rofech-yellow px-6 py-3 rounded-none 
+    @apply border-2 border-rofech-yellow text-rofech-yellow px-8 py-3.5 
     font-heading font-semibold uppercase tracking-wider text-sm transition-all duration-300 
     hover:bg-rofech-yellow hover:text-rofech-black;
   }
@@ -47,9 +59,21 @@
     @apply relative overflow-hidden cursor-pointer;
   }
 
+  .project-card::after {
+    content: '';
+    @apply absolute inset-0 border-2 border-rofech-yellow opacity-0 
+    transition-all duration-500 pointer-events-none;
+    transform: scale(0.95);
+  }
+
+  .project-card:hover::after {
+    @apply opacity-100;
+    transform: scale(1);
+  }
+
   .project-card-overlay {
-    @apply absolute inset-0 bg-rofech-yellow opacity-0 group-hover:opacity-90 
-    transition-opacity duration-300 flex items-center justify-center;
+    @apply absolute inset-0 bg-gradient-to-t from-rofech-black/95 via-rofech-black/50 to-transparent 
+    opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-start p-8;
   }
 
   .loading-skeleton {
