@@ -32,12 +32,8 @@ const Contact = () => {
     e.preventDefault();
     
     try {
-      // Use Formspree for local dev, serverless function for production
-      const endpoint = import.meta.env.DEV 
-        ? 'https://formspree.io/f/xanloakq'  // Local development
-        : '/api/contact';  // Production (Vercel)
-      
-      const response = await fetch(endpoint, {
+      // Send to your serverless function
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
