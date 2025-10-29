@@ -29,7 +29,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
       }`}
     >
       <div className="section-container">
@@ -41,9 +41,7 @@ const Header = () => {
               alt="ROFECH Logo" 
               className="w-10 h-10 object-cover transform group-hover:rotate-45 transition-transform duration-300"
             />
-            <span className={`font-heading font-bold text-xl tracking-tight transition-colors ${
-              isScrolled ? 'text-rofech-black' : 'text-white'
-            }`}>
+            <span className="font-heading font-bold text-xl tracking-tight text-rofech-black">
               ROFECH
             </span>
           </Link>
@@ -55,12 +53,10 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `pb-1 font-semibold text-sm uppercase tracking-[0.15em] transition-all duration-300 relative ${
+                  `pb-2 font-bold text-sm uppercase tracking-wider transition-all duration-300 relative ${
                     isActive
-                      ? 'text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-rofech-yellow'
-                      : isScrolled
-                      ? 'text-rofech-black hover:text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
-                      : 'text-white hover:text-rofech-yellow after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
+                      ? 'text-rofech-black after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-rofech-yellow'
+                      : 'text-gray-600 hover:text-rofech-black after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
                   }`
                 }
               >
@@ -72,9 +68,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 transition-colors ${
-              isScrolled ? 'text-rofech-black' : 'text-white'
-            }`}
+            className="md:hidden p-2 text-rofech-black transition-colors"
             aria-label="Toggle menu"
           >
             <svg

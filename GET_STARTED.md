@@ -250,10 +250,11 @@ Your brand yellow (`#FFED00`) is used throughout for:
 
 ### Contact Form
 The form is **frontend-only** right now. To make it functional:
-1. Connect to a backend API, or
-2. Use a service like Formspree, or
-3. Use Netlify Forms, or
-4. Integrate with your existing system
+1. Using Vercel Serverless Function (already configured in `/api/contact.ts`)
+2. Set environment variables in Vercel dashboard:
+   - EMAIL_USER (your Gmail)
+   - EMAIL_PASSWORD (Gmail App Password)
+3. Emails will be sent to duralmacky@gmail.com
 
 ### Images
 Your 3 existing images are being used for all projects. To differentiate:

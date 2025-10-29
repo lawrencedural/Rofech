@@ -214,7 +214,7 @@ Use this checklist to ensure your website is ready for launch.
 ## 🔧 Phase 9: Backend Integration (Optional)
 
 ### Contact Form Backend
-- [ ] Choose email service (Formspree, SendGrid, etc.)
+- [ ] Configure email environment variables (EMAIL_USER, EMAIL_PASSWORD)
 - [ ] Set up email endpoint
 - [ ] Update form submission code
 - [ ] Test email delivery

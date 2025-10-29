@@ -28,23 +28,54 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        projectType: '',
-        budget: '',
-        message: ''
+    try {
+      // Use Formspree for local dev, serverless function for production
+      const endpoint = import.meta.env.DEV 
+        ? 'https://formspree.io/f/xanloakq'  // Local development
+        : '/api/contact';  // Production (Vercel)
+      
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          message: formData.message,
+        }),
       });
-    }, 3000);
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Success:', data);
+        setIsSubmitted(true);
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            projectType: '',
+            budget: '',
+            message: ''
+          });
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        console.error('Server error:', errorData);
+        throw new Error(errorData.error || errorData.message || 'Failed to send message');
+      }
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      alert(`Error: ${error.message}\n\nPlease check the browser console for details.`);
+    }
   };
 
   return (
