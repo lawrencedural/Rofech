@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
-import SectionTitle from '../components/common/SectionTitle';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
