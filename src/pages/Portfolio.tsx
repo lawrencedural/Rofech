@@ -15,47 +15,55 @@ const Portfolio = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-24">
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-rofech-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80 z-10" />
-        <div className="relative z-20 text-center text-white section-container">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-heading font-bold mb-4"
-          >
-            Our <span className="text-rofech-yellow">Portfolio</span>
-          </motion.h1>
+      <section className="relative py-20 md:py-28 bg-rofech-ink text-rofech-limewash">
+        <div className="section-container">
           <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="eyebrow-on-dark mb-5"
+          >
+            Sheet Index
+          </motion.p>
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300"
+            transition={{ duration: 0.7 }}
+            className="mb-5 text-rofech-limewash"
           >
-            Discover our collection of exceptional architectural projects
+            Portfolio
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-lg md:text-xl text-rofech-stone max-w-2xl"
+          >
+            A working record of homes and spaces the studio has designed and
+            built across the Philippines.
           </motion.p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-rofech-limewash">
         <div className="section-container">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-wrap gap-3 mb-14 border-b border-rofech-ink/15 pb-8"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-8 py-3 font-heading font-bold uppercase text-xs tracking-[0.2em] transition-all duration-500 ${
+                className={`px-5 py-2.5 font-mono text-xs uppercase tracking-widest2 transition-colors duration-300 border ${
                   activeFilter === category
-                    ? 'bg-rofech-yellow text-rofech-black'
-                    : 'bg-white text-rofech-black border-2 border-gray-200 hover:border-rofech-black hover:bg-rofech-black hover:text-white'
+                    ? 'bg-rofech-ink text-rofech-limewash border-rofech-ink'
+                    : 'bg-transparent text-rofech-ink-soft border-rofech-ink/20 hover:border-rofech-ink'
                 }`}
               >
                 {category}
@@ -64,46 +72,34 @@ const Portfolio = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: (index % 6) * 0.08 }}
                 layout
               >
-                <Link to={`/portfolio/${project.id}`} className="project-card block group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+                <Link to={`/portfolio/${project.id}`} className="block group">
+                  <div className="frame aspect-[4/5] bg-rofech-stone">
                     <img
                       src={project.thumbnail}
                       alt={project.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
-                    <div className="project-card-overlay">
-                      <div className="text-white w-full">
-                        <div className="h-px w-12 bg-rofech-yellow mb-4"></div>
-                        <h3 className="font-heading font-bold text-2xl mb-2">{project.name}</h3>
-                        <p className="text-sm uppercase tracking-[0.2em] text-gray-300 mb-1">{project.type}</p>
-                        <p className="text-sm text-gray-400 mb-1">{project.location}</p>
-                        <p className="text-xs text-gray-500">{project.year}</p>
-                        <div className="mt-6 inline-flex items-center gap-2 text-rofech-yellow font-bold uppercase text-xs tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
-                          View Project
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
+                    <div className="corner-tl" />
+                    <div className="corner-br" />
                   </div>
-                  <div className="mt-6">
-                    <h3 className="font-heading font-bold text-xl mb-1 tracking-tight">{project.name}</h3>
-                    <p className="text-gray-500 text-sm uppercase tracking-[0.15em]">{project.type}</p>
-                    <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
-                      <span>{project.location}</span>
-                      <span>•</span>
-                      <span>{project.year}</span>
+                  <div className="mt-5 pt-4 border-t border-rofech-ink/15">
+                    <div className="flex items-baseline justify-between gap-3 mb-1">
+                      <h3 className="font-heading text-xl">{project.name}</h3>
+                      <span className="font-mono text-[11px] text-rofech-concrete shrink-0">{project.year}</span>
                     </div>
+                    <p className="text-rofech-ink-soft text-sm">{project.type}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete mt-2">
+                      {project.location}
+                    </p>
                   </div>
                 </Link>
               </motion.div>
@@ -112,7 +108,7 @@ const Portfolio = () => {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-xl text-gray-600">No projects found in this category.</p>
+              <p className="text-lg text-rofech-ink-soft">No projects found in this category.</p>
             </div>
           )}
         </div>
@@ -122,4 +118,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-

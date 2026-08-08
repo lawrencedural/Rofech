@@ -1,52 +1,52 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 interface SectionTitleProps {
+  eyebrow?: string;
   title: string;
   subtitle?: string;
-  align?: 'left' | 'center' | 'right';
+  align?: 'left' | 'center';
+  onDark?: boolean;
 }
 
-const SectionTitle = ({ title, subtitle, align = 'center' }: SectionTitleProps) => {
+const SectionTitle = ({ eyebrow, title, subtitle, align = 'left', onDark = false }: SectionTitleProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const alignmentClasses = {
-    left: 'text-left',
-    center: 'text-center',
-    right: 'text-right'
-  };
+  const alignmentClasses = align === 'center' ? 'text-center mx-auto' : 'text-left';
 
   return (
-    <div ref={ref} className={`mb-12 md:mb-16 ${alignmentClasses[align]}`}>
+    <div ref={ref} className={`mb-14 md:mb-20 max-w-3xl ${alignmentClasses}`}>
+      {eyebrow && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className={`${onDark ? 'eyebrow-light' : 'eyebrow'} mb-4`}
+        >
+          {eyebrow}
+        </motion.p>
+      )}
       <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-3xl lg:text-4xl font-heading mb-4"
+        className={onDark ? 'text-rofech-limewash' : 'text-rofech-ink'}
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className={`text-base md:text-lg text-gray-600 max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className={`text-base md:text-lg mt-4 leading-relaxed ${onDark ? 'text-rofech-stone' : 'text-rofech-ink-soft'} ${align === 'center' ? 'mx-auto' : ''}`}
         >
           {subtitle}
         </motion.p>
       )}
-      <motion.div
-        initial={{ width: 0 }}
-        animate={isInView ? { width: 80 } : { width: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className={`h-1 bg-rofech-yellow mt-6 ${align === 'center' ? 'mx-auto' : ''}`}
-      />
     </div>
   );
 };
 
 export default SectionTitle;
-

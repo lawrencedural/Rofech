@@ -10,69 +10,60 @@ const FeaturedProjects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-rofech-limewash">
       <div className="section-container">
-        <SectionTitle
-          title="Featured Projects"
-          subtitle="Explore our latest architectural masterpieces"
-        />
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 md:mb-20">
+          <SectionTitle
+            eyebrow="Selected Work"
+            title="Featured projects"
+            subtitle="A sample of recent residences designed and built by the studio."
+          />
+          <Link
+            to="/portfolio"
+            className="hidden md:inline-flex font-mono text-xs uppercase tracking-widest2 items-center gap-2 border border-rofech-ink px-6 py-3 mb-14 hover:bg-rofech-ink hover:text-rofech-limewash transition-colors duration-300"
+          >
+            View all projects →
+          </Link>
+        </div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
             >
-              <Link to={`/portfolio/${project.id}`} className="project-card block group">
-                <div className="relative aspect-[4/5] overflow-hidden">
+              <Link to={`/portfolio/${project.id}`} className="block group">
+                <div className="frame aspect-[4/5] bg-rofech-stone">
                   <img
                     src={project.thumbnail}
                     alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
-                  <div className="project-card-overlay">
-                    <div className="text-white w-full">
-                      <div className="h-px w-12 bg-rofech-yellow mb-4"></div>
-                      <h3 className="font-heading font-bold text-2xl mb-2">{project.name}</h3>
-                      <p className="text-sm uppercase tracking-[0.2em] text-gray-300 mb-1">{project.type}</p>
-                      <p className="text-sm text-gray-400">{project.location}</p>
-                      <div className="mt-6 inline-flex items-center gap-2 text-rofech-yellow font-bold uppercase text-xs tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
-                        View Project
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                  <div className="corner-tl" />
+                  <div className="corner-br" />
                 </div>
-                <div className="mt-4">
-                  <h3 className="font-heading font-bold text-xl mb-1">{project.name}</h3>
-                  <p className="text-gray-600 text-sm">{project.type}</p>
+                <div className="mt-5 pt-4 border-t border-rofech-ink/15">
+                  <h3 className="font-heading text-xl mb-2">{project.name}</h3>
+                  <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">
+                    <span>{project.location}</span>
+                    <span>{project.year}</span>
+                  </div>
                 </div>
               </Link>
             </motion.div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12"
-        >
-          <Link
-            to="/portfolio"
-            className="btn-secondary inline-block"
-          >
+        <div className="mt-12 text-center md:hidden">
+          <Link to="/portfolio" className="btn-secondary inline-flex">
             View All Projects
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default FeaturedProjects;
-

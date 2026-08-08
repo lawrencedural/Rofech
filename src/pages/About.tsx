@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import SectionTitle from '../components/common/SectionTitle';
 import Button from '../components/common/Button';
+import BrandSeal from '../components/common/BrandSeal';
 
 const About = () => {
   const ref = useRef(null);
@@ -12,7 +13,7 @@ const About = () => {
   const values = [
     {
       title: 'Innovation',
-      description: 'Pushing boundaries with cutting-edge design solutions that blend form and function.'
+      description: 'Pushing boundaries with design solutions that blend form and function.'
     },
     {
       title: 'Sustainability',
@@ -52,80 +53,90 @@ const About = () => {
     {
       number: '05',
       title: 'Delivery',
-      description: 'Final walkthrough and handover of your completed dream space.'
+      description: 'Final walkthrough and handover of your completed space.'
     }
   ];
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-24">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-rofech-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80 z-10" />
-        <div className="relative z-20 text-center text-white section-container">
+      <section className="py-20 md:py-28 bg-rofech-ink text-rofech-limewash">
+        <div className="section-container">
+          <p className="eyebrow-on-dark mb-5">Est. 2009 — Las Piñas, PH</p>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-heading font-bold mb-4"
-          >
-            About <span className="text-rofech-yellow">ROFECH</span>
-          </motion.h1>
-          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+            transition={{ duration: 0.7 }}
+            className="mb-5 text-rofech-limewash"
           >
-            Crafting architectural excellence since 2008
+            About Rofech
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-lg md:text-xl text-rofech-stone max-w-2xl"
+          >
+            Fifteen years spent working out how houses should sit under
+            Philippine sun and rain.
           </motion.p>
         </div>
       </section>
 
       {/* Company Story */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-rofech-limewash">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-                Our <span className="text-rofech-yellow">Story</span>
-              </h2>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p className="eyebrow mb-4">Our Story</p>
+              <h2 className="mb-6">A studio built around climate</h2>
+              <div className="space-y-4 text-rofech-ink-soft leading-relaxed">
                 <p>
-                  ROFECH design & development was founded with a singular vision: to create architectural spaces
-                  that seamlessly blend tropical living with contemporary design. Based in the Philippines, we've
-                  spent over 15 years perfecting the art of tropical modern architecture.
+                  ROFECH design &amp; development was founded on a single idea:
+                  that tropical living and contemporary architecture aren't
+                  in tension — they're the same problem, solved well. Based
+                  in the Philippines, we've spent over 15 years refining
+                  that approach.
                 </p>
                 <p>
-                  Our approach combines sustainable materials, climate-responsive design, and innovative construction
-                  techniques to create homes that are not just beautiful, but also functional and environmentally conscious.
+                  Every project starts with orientation, airflow, and light,
+                  then builds outward in materials suited to the climate:
+                  timber, concrete, and stone that age honestly in humidity
+                  and rain.
                 </p>
                 <p>
-                  From concept to completion, we guide our clients through every step of the architectural journey,
-                  ensuring their vision becomes reality while maintaining the highest standards of quality and craftsmanship.
+                  From concept to completion, we guide clients through the
+                  full process ourselves, so the design intent survives all
+                  the way to handover.
                 </p>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               viewport={{ once: true }}
-              className="relative h-[500px]"
+              className="relative"
             >
-              <img
-                src="/images/pic-2-rofech.jpg"
-                alt="ROFECH Office"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute -bottom-8 -left-8 bg-rofech-yellow p-8 max-w-xs">
-                <p className="font-heading font-bold text-2xl text-rofech-black">
-                  15+ Years of Architectural Excellence
+              <div className="frame aspect-[4/5]">
+                <img
+                  src="/images/pic-2-rofech.jpg"
+                  alt="ROFECH project detail"
+                  className="w-full h-full object-cover"
+                />
+                <div className="corner-tl" />
+                <div className="corner-br" />
+              </div>
+              <div className="plate p-6 max-w-xs mt-[-3rem] ml-6 relative bg-rofech-limewash">
+                <p className="font-heading text-2xl mb-1">15+ years</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">
+                  In tropical modern architecture
                 </p>
               </div>
             </motion.div>
@@ -134,82 +145,143 @@ const About = () => {
       </section>
 
       {/* Design Philosophy */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-rofech-paper">
         <div className="section-container">
           <SectionTitle
-            title="Design Philosophy"
-            subtitle="Our approach to creating exceptional spaces"
+            eyebrow="Philosophy"
+            title="Design that responds to place"
           />
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-3xl"
           >
-            <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              We believe in designing spaces that respond to their environment while reflecting the unique
-              personality of their inhabitants. Our tropical modern aesthetic celebrates natural light,
-              ventilation, and the seamless integration of indoor and outdoor spaces.
+            <p className="text-xl text-rofech-ink leading-relaxed mb-6">
+              We design spaces that respond to their environment while
+              reflecting the people who live in them. Our tropical modern
+              language centers on natural light, cross-ventilation, and a
+              close relationship between indoor and outdoor rooms.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Every project is a collaboration, a dialogue between architect and client, resulting in spaces
-              that are both timeless and distinctly personal.
+            <p className="text-lg text-rofech-ink-soft leading-relaxed">
+              Every project is a dialogue between architect and client —
+              the result should feel both timeless and specific to the
+              family that commissioned it.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-rofech-limewash">
         <div className="section-container">
-          <SectionTitle title="Our Values" />
+          <SectionTitle eyebrow="Principles" title="What guides the work" />
 
-          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-rofech-ink/10">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-6 hover:shadow-lg transition-shadow duration-300 border-t-4 border-rofech-yellow"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="bg-rofech-limewash p-7"
               >
-                <h3 className="font-heading font-bold text-xl mb-3">{value.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                <h3 className="font-heading text-xl mb-3">{value.title}</h3>
+                <p className="text-rofech-ink-soft text-sm leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="section-padding bg-rofech-black text-white">
+      {/* Practice Standards */}
+      <section className="section-padding bg-rofech-paper">
         <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-              Our <span className="text-rofech-yellow">Process</span>
-            </h2>
-            <p className="text-xl text-gray-300">From vision to reality in five steps</p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14">
+            <div className="lg:col-span-7">
+              <p className="eyebrow mb-4">Practice Standards</p>
+              <h2 className="mb-8">How we're accountable</h2>
+
+              <div className="space-y-0">
+                {[
+                  {
+                    title: 'Licensed architects of record',
+                    detail: 'Every project is designed and sealed by PRC-registered architects, in accordance with RA 9266.',
+                  },
+                  {
+                    title: 'Permit-ready documentation',
+                    detail: 'Construction drawings are prepared to LGU and building-code submission standard, not just presentation quality.',
+                  },
+                  {
+                    title: 'Site-present construction administration',
+                    detail: 'The design team conducts regular site visits through the build, not a one-time handoff to a separate contractor.',
+                  },
+                  {
+                    title: 'UAP-affiliated practice',
+                    detail: 'We hold membership with the United Architects of the Philippines and follow its code of ethics.',
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    viewport={{ once: true }}
+                    className="flex gap-6 py-6 border-t border-rofech-ink/10 last:border-b"
+                  >
+                    <span className="font-mono text-xs text-rofech-ink/50 font-medium mt-1 shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-lg mb-1.5">{item.title}</h3>
+                      <p className="text-rofech-ink-soft text-sm leading-relaxed">{item.detail}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.94 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="plate p-10 md:p-14"
+              >
+                <BrandSeal className="w-40 h-40 md:w-48 md:h-48 mx-auto" variant="ink" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="section-padding bg-rofech-ink text-rofech-limewash">
+        <div className="section-container">
+          <div className="mb-16 max-w-2xl">
+            <p className="eyebrow-light mb-4">Sequence</p>
+            <h2 className="mb-4 text-rofech-limewash">From vision to handover</h2>
+            <p className="text-lg text-rofech-stone">Five stages, the same team throughout.</p>
           </div>
 
-          <div ref={processRef} className="max-w-4xl mx-auto">
+          <div ref={processRef} className="max-w-3xl">
             {processSteps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, x: -50 }}
-                animate={isProcessInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="flex gap-6 mb-12 last:mb-0"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isProcessInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ duration: 0.5, delay: index * 0.12 }}
+                className="flex gap-6 py-7 border-t border-rofech-limewash/15 last:border-b"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-rofech-yellow flex items-center justify-center">
-                    <span className="font-heading font-bold text-2xl text-rofech-black">{step.number}</span>
-                  </div>
+                  <span className="font-mono text-sm text-rofech-brass-light">{step.number}</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-2xl mb-2">{step.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
+                  <h3 className="font-heading text-xl mb-2">{step.title}</h3>
+                  <p className="text-rofech-stone leading-relaxed">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -218,19 +290,18 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-rofech-limewash">
         <div className="section-container text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let's collaborate to create a space that reflects your vision and exceeds your expectations.
+            <h2 className="mb-6">Ready to start your project?</h2>
+            <p className="text-lg text-rofech-ink-soft mb-8 max-w-xl mx-auto">
+              Let's talk through your site, your program, and what a tropical
+              modern home could look like for you.
             </p>
             <Button to="/contact">Get in Touch</Button>
           </motion.div>
@@ -241,4 +312,3 @@ const About = () => {
 };
 
 export default About;
-

@@ -1,90 +1,102 @@
 import { motion } from 'framer-motion';
 import Button from '../common/Button';
 
+const stats = [
+  { label: 'Founded', value: '2009' },
+  { label: 'Projects delivered', value: '120+' },
+  { label: 'Based in', value: 'Las Piñas, PH' },
+];
+
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax Effect */}
-      <motion.div
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5 }}
-        className="absolute inset-0 z-0"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
-        <img
-          src="/images/pic-1-rofech.jpg"
-          alt="Modern luxury residential architecture"
-          className="w-full h-full object-cover"
-        />
-      </motion.div>
-
-      {/* Content */}
-      <div className="relative z-20 text-center text-white section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6"
-            initial={{ opacity: 0, y: 30 }}
+    <section className="relative bg-rofech-ink text-rofech-limewash overflow-hidden pt-28 lg:pt-32">
+      <div className="section-container grid grid-cols-1 lg:grid-cols-12 min-h-0 lg:min-h-[calc(100vh-2rem)]">
+        {/* Content */}
+        <div className="lg:col-span-6 flex flex-col justify-center py-10 md:py-16 lg:py-0 lg:pr-14">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.6 }}
+            className="eyebrow-on-dark mb-6"
           >
-            ROFECH
-            <br />
-            <span className="text-rofech-yellow">design & development</span>
+            Rofech Design &amp; Development — PRC-Registered — Las Piñas, PH
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-rofech-limewash mb-6 text-balance"
+          >
+            Architecture built for the tropics,
+            <span className="italic text-rofech-brass-light"> not against them.</span>
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl font-light mb-12 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-lg text-rofech-stone leading-relaxed max-w-md mb-10"
           >
-            Creating Timeless Tropical Modern Homes
+            We design and build homes around Manila's light, heat, and rain —
+            open-plan, cross-ventilated, and detailed in timber, concrete, and
+            stone. One licensed team, from permit through occupancy.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-wrap gap-4 mb-14 lg:mb-16"
           >
-            <Button to="/portfolio">Explore Projects</Button>
+            <Button to="/contact" variant="onDark">Start a Project</Button>
+            <Button to="/portfolio" variant="ghostDark">View Portfolio</Button>
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center text-white"
-        >
-          <span className="text-sm uppercase tracking-wider mb-2">Scroll</span>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          {/* Title-block stat strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="grid grid-cols-3 border-t border-rofech-limewash/15 max-w-lg"
           >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </motion.div>
+            {stats.map((stat) => (
+              <div key={stat.label} className="border-r last:border-r-0 border-rofech-limewash/15 py-5 pr-4">
+                <p className="font-heading text-xl md:text-2xl text-rofech-limewash mb-1">{stat.value}</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest2 text-rofech-stone/70 leading-snug">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Image */}
+        <div className="lg:col-span-6 relative h-[52vh] lg:h-auto -mx-6 sm:-mx-8 lg:mx-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="frame absolute inset-0 lg:inset-y-0 lg:right-0 lg:w-[calc(100%+3rem)]"
+          >
+            <img
+              src="/images/pic-1-rofech.jpg"
+              alt="Villa 37 — a tropical modern residence with a timber slat facade"
+              className="w-full h-full object-cover"
+            />
+            <div className="corner-tl" />
+            <div className="corner-br" />
+            <div className="absolute inset-0 bg-gradient-to-t from-rofech-ink/70 via-transparent to-transparent lg:bg-gradient-to-l lg:from-rofech-ink/0 lg:via-transparent lg:to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 lg:left-8 lg:right-auto">
+              <p className="font-mono text-[10px] uppercase tracking-widest2 text-rofech-limewash/80 bg-rofech-ink/60 backdrop-blur-sm inline-block px-3 py-1.5">
+                Villa 37 — Las Piñas — 2024
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
 
 export default Hero;
-

@@ -4,36 +4,49 @@ import { Link } from 'react-router-dom';
 import { services } from '../../data/services';
 import SectionTitle from '../common/SectionTitle';
 
+// Discipline codes in the spirit of a drawing set's sheet index
+// (A — Architectural, ID — Interior Design, etc.)
+const disciplineCode: Record<string, string> = {
+  'architectural-design': 'A',
+  '3d-visualization': 'V',
+  'development-construction': 'DC',
+  'interior-coordination': 'ID',
+};
+
 const ServicesOverview = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-rofech-paper">
       <div className="section-container">
         <SectionTitle
-          title="Our Services"
-          subtitle="Comprehensive architectural solutions from concept to completion"
+          eyebrow="Capabilities"
+          title="What we take on"
+          subtitle="Four disciplines, one studio — from the first sketch to the final walkthrough."
         />
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-rofech-ink/10">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white p-8 hover:shadow-xl transition-all duration-300 border-l-4 border-transparent hover:border-rofech-yellow flex flex-col h-full"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="bg-rofech-paper p-8 flex flex-col h-full"
             >
-              <h3 className="font-heading font-bold text-xl mb-3">{service.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+              <span className="font-mono text-xs font-medium text-rofech-ink border border-rofech-brass bg-rofech-brass/15 w-9 h-9 flex items-center justify-center mb-6">
+                {disciplineCode[service.id] ?? String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className="font-heading text-xl mb-3">{service.title}</h3>
+              <p className="text-rofech-ink-soft text-sm leading-relaxed mb-8 flex-grow">
                 {service.description}
               </p>
               <Link
                 to="/services"
-                className="text-rofech-black font-semibold text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 mt-auto"
+                className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-ink inline-flex items-center gap-2 hover:text-rofech-brass hover:gap-3 transition-all duration-300 mt-auto"
               >
-                Learn More →
+                Learn more →
               </Link>
             </motion.div>
           ))}
@@ -44,4 +57,3 @@ const ServicesOverview = () => {
 };
 
 export default ServicesOverview;
-

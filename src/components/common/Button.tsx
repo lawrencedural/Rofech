@@ -1,70 +1,65 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 interface ButtonProps {
   children: React.ReactNode;
   to?: string;
   href?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'onDark' | 'ghostDark';
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
+  disabled?: boolean;
 }
 
-const Button = ({ 
-  children, 
-  to, 
-  href, 
-  variant = 'primary', 
-  onClick, 
-  type = 'button',
-  className = ''
-}: ButtonProps) => {
-  const baseClasses = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
-  const combinedClasses = `${baseClasses} ${className}`;
+const variantClass = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  onDark: 'btn-on-dark',
+  ghostDark: 'btn-ghost-dark',
+};
 
-  const MotionButton = motion.button;
-  const MotionLink = motion(Link);
-  const MotionA = motion.a;
+const Arrow = () => (
+  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+);
+
+const Button = ({
+  children,
+  to,
+  href,
+  variant = 'primary',
+  onClick,
+  type = 'button',
+  className = '',
+  disabled = false,
+}: ButtonProps) => {
+  const combinedClasses = `group ${variantClass[variant]} ${className} ${disabled ? 'opacity-50 pointer-events-none cursor-not-allowed' : ''}`;
 
   if (to) {
     return (
-      <MotionLink
-        to={to}
-        className={combinedClasses}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <Link to={to} className={combinedClasses}>
         {children}
-      </MotionLink>
+        <Arrow />
+      </Link>
     );
   }
 
   if (href) {
     return (
-      <MotionA
-        href={href}
-        className={combinedClasses}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <a href={href} className={combinedClasses}>
         {children}
-      </MotionA>
+        <Arrow />
+      </a>
     );
   }
 
   return (
-    <MotionButton
-      type={type}
-      onClick={onClick}
-      className={combinedClasses}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <button type={type} onClick={onClick} className={combinedClasses} disabled={disabled}>
       {children}
-    </MotionButton>
+      <Arrow />
+    </button>
   );
 };
 
 export default Button;
-

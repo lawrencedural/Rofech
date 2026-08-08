@@ -7,10 +7,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -24,51 +21,59 @@ const Header = () => {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        isScrolled ? 'bg-rofech-limewash/95 backdrop-blur-sm border-rofech-ink/10' : 'bg-rofech-limewash border-transparent'
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between py-4 md:py-6">
+        <div className="flex items-center justify-between py-4 md:py-5">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <img 
-              src="/images/logo-wo-name.jpg" 
-              alt="ROFECH Logo" 
-              className="w-10 h-10 object-cover transform group-hover:rotate-45 transition-transform duration-300"
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src="/images/logo-wo-name.jpg"
+              alt="ROFECH Logo"
+              className="w-9 h-9 object-cover"
             />
-            <span className="font-heading font-bold text-xl tracking-tight text-rofech-black">
-              ROFECH
+            <span className="flex flex-col leading-none">
+              <span className="font-heading font-medium text-lg tracking-tight text-rofech-ink">
+                ROFECH
+              </span>
+              <span className="hidden sm:block font-mono text-[10px] uppercase tracking-widest2 text-rofech-concrete mt-0.5">
+                design &amp; development
+              </span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center gap-9">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `pb-2 font-bold text-sm uppercase tracking-wider transition-all duration-300 relative ${
+                  `pb-1 font-mono text-xs uppercase tracking-widest2 transition-colors duration-300 relative ${
                     isActive
-                      ? 'text-rofech-black after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-rofech-yellow'
-                      : 'text-gray-600 hover:text-rofech-black after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-rofech-yellow after:transition-all after:duration-300 hover:after:w-full'
+                      ? 'text-rofech-ink after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-rofech-brass'
+                      : 'text-rofech-concrete hover:text-rofech-ink'
                   }`
                 }
               >
                 {item.name}
               </NavLink>
             ))}
+            <Link
+              to="/contact"
+              className="font-mono text-xs uppercase tracking-widest2 border border-rofech-ink px-5 py-2.5 text-rofech-ink hover:bg-rofech-ink hover:text-rofech-limewash transition-colors duration-300"
+            >
+              Start a project
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-rofech-black transition-colors"
+            className="md:hidden p-2 text-rofech-ink transition-colors"
             aria-label="Toggle menu"
           >
             <svg
@@ -76,7 +81,7 @@ const Header = () => {
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
+              strokeWidth="1.5"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -97,38 +102,36 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-200"
+            className="md:hidden bg-rofech-limewash border-t border-rofech-ink/10"
           >
             <nav className="section-container py-4">
-              {navItems.map((item, index) => (
-                <motion.div
+              {navItems.map((item) => (
+                <NavLink
                   key={item.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `block py-3 font-mono text-xs uppercase tracking-widest2 transition-colors ${
+                      isActive ? 'text-rofech-ink font-medium' : 'text-rofech-concrete hover:text-rofech-ink'
+                    }`
+                  }
                 >
-                  <NavLink
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `block py-3 font-medium transition-colors ${
-                        isActive
-                          ? 'text-rofech-yellow'
-                          : 'text-rofech-black hover:text-rofech-yellow'
-                      }`
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
-                </motion.div>
+                  {item.name}
+                </NavLink>
               ))}
+              <NavLink
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-3 font-mono text-xs uppercase tracking-widest2 text-rofech-ink font-medium"
+              >
+                Start a project →
+              </NavLink>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 
 export default Header;
-

@@ -13,8 +13,8 @@ const ProjectDetail = () => {
     return (
       <div className="pt-24 pb-16 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-heading font-bold mb-4">Project Not Found</h1>
-          <Link to="/portfolio" className="btn-primary inline-block">
+          <h1 className="text-3xl mb-4">Project not found</h1>
+          <Link to="/portfolio" className="btn-primary inline-flex">
             Back to Portfolio
           </Link>
         </div>
@@ -23,9 +23,9 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-24">
       {/* Hero Image */}
-      <section className="relative h-[70vh] overflow-hidden bg-black">
+      <section className="relative h-[65vh] overflow-hidden bg-rofech-ink">
         <motion.img
           key={selectedImage}
           initial={{ opacity: 0 }}
@@ -35,84 +35,80 @@ const ProjectDetail = () => {
           alt={project.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-rofech-ink/70 via-transparent to-transparent" />
+        <div className="absolute bottom-6 left-6 right-6 section-container !px-0 md:!px-8">
+          <p className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-limewash/85 bg-rofech-ink/60 backdrop-blur-sm inline-block px-3 py-1.5">
+            {project.name} — {project.location} — {project.year}
+          </p>
+        </div>
       </section>
 
       {/* Image Thumbnails */}
-      <section className="bg-gray-100 py-4">
-        <div className="section-container">
-          <div className="flex gap-4 justify-center overflow-x-auto">
-            {project.images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`flex-shrink-0 w-24 h-24 overflow-hidden transition-all ${
-                  selectedImage === index ? 'ring-4 ring-rofech-yellow' : 'opacity-60 hover:opacity-100'
-                }`}
-              >
-                <img src={image} alt={`${project.name} view ${index + 1}`} className="w-full h-full object-cover" />
-              </button>
-            ))}
+      {project.images.length > 1 && (
+        <section className="bg-rofech-paper py-4 border-b border-rofech-ink/10">
+          <div className="section-container">
+            <div className="flex gap-3 justify-center overflow-x-auto">
+              {project.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(index)}
+                  className={`flex-shrink-0 w-20 h-20 overflow-hidden transition-all ${
+                    selectedImage === index ? 'ring-2 ring-rofech-brass' : 'opacity-50 hover:opacity-100'
+                  }`}
+                >
+                  <img src={image} alt={`${project.name} view ${index + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Project Details */}
       <section className="section-padding">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             {/* Main Content */}
             <div className="lg:col-span-2">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <Link to="/portfolio" className="text-gray-500 hover:text-rofech-yellow transition-colors">
-                    ← Back to Portfolio
-                  </Link>
+                <Link to="/portfolio" className="font-mono text-xs uppercase tracking-widest2 text-rofech-concrete hover:text-rofech-brass transition-colors mb-6 inline-block">
+                  ← Back to Portfolio
+                </Link>
+
+                <h1 className="mb-3 text-4xl md:text-5xl">{project.name}</h1>
+                <p className="text-lg text-rofech-ink-soft mb-12">{project.type}</p>
+
+                <div className="mb-14">
+                  <p className="eyebrow mb-4">Design Philosophy</p>
+                  <p className="text-rofech-ink-soft leading-relaxed text-lg">{project.description}</p>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">{project.name}</h1>
-                <p className="text-xl text-gray-600 mb-8">{project.type}</p>
-
-                <div className="prose prose-lg max-w-none mb-12">
-                  <h2 className="font-heading font-bold text-2xl mb-4">Design Philosophy</h2>
-                  <p className="text-gray-700 leading-relaxed">{project.description}</p>
-                </div>
-
-                <div className="mb-12">
-                  <h2 className="font-heading font-bold text-2xl mb-6">Key Features</h2>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="mb-14">
+                  <p className="eyebrow mb-6">Key Features</p>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     {project.features.map((feature, index) => (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="flex items-start gap-3"
-                      >
-                        <span className="text-rofech-yellow text-xl mt-1">✓</span>
-                        <span className="text-gray-700">{feature}</span>
-                      </motion.li>
+                      <li key={index} className="flex items-start gap-3 pb-4 border-b border-rofech-ink/10">
+                        <span className="text-rofech-ink/50 font-mono text-xs mt-1 font-medium">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="text-rofech-ink-soft">{feature}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
 
                 <div>
-                  <h2 className="font-heading font-bold text-2xl mb-6">Materials</h2>
+                  <p className="eyebrow mb-6">Materials</p>
                   <div className="flex flex-wrap gap-3">
                     {project.materials.map((material, index) => (
-                      <motion.span
+                      <span
                         key={index}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        className="bg-gray-100 px-4 py-2 text-sm text-gray-700"
+                        className="border border-rofech-ink/15 px-4 py-2 text-sm text-rofech-ink-soft font-mono"
                       >
                         {material}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -122,32 +118,32 @@ const ProjectDetail = () => {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-gray-50 p-8 sticky top-24"
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="plate p-8 sticky top-24"
               >
-                <h3 className="font-heading font-bold text-xl mb-6">Project Specs</h3>
-                <div className="space-y-4 mb-8">
-                  <div className="border-b border-gray-300 pb-3">
-                    <span className="text-sm text-gray-500 uppercase tracking-wider block mb-1">Location</span>
-                    <span className="text-lg font-medium">{project.location}</span>
+                <p className="eyebrow mb-6">Project Specs</p>
+                <div className="mb-8">
+                  <div className="flex justify-between border-b border-rofech-ink/10 py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">Location</span>
+                    <span className="text-sm font-medium text-right">{project.location}</span>
                   </div>
-                  <div className="border-b border-gray-300 pb-3">
-                    <span className="text-sm text-gray-500 uppercase tracking-wider block mb-1">Year</span>
-                    <span className="text-lg font-medium">{project.year}</span>
+                  <div className="flex justify-between border-b border-rofech-ink/10 py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">Year</span>
+                    <span className="text-sm font-medium">{project.year}</span>
                   </div>
-                  <div className="border-b border-gray-300 pb-3">
-                    <span className="text-sm text-gray-500 uppercase tracking-wider block mb-1">Area</span>
-                    <span className="text-lg font-medium">{project.area}</span>
+                  <div className="flex justify-between border-b border-rofech-ink/10 py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">Area</span>
+                    <span className="text-sm font-medium">{project.area}</span>
                   </div>
-                  <div className="pb-3">
-                    <span className="text-sm text-gray-500 uppercase tracking-wider block mb-1">Category</span>
-                    <span className="text-lg font-medium">{project.category}</span>
+                  <div className="flex justify-between py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete">Category</span>
+                    <span className="text-sm font-medium">{project.category}</span>
                   </div>
                 </div>
 
-                <Button to="/contact" className="w-full text-center">
+                <Button to="/contact" className="w-full">
                   Start Your Project
                 </Button>
               </motion.div>
@@ -160,4 +156,3 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
-

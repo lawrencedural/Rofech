@@ -12,29 +12,29 @@ const TrustIndicators = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats: Stat[] = [
-    { label: 'Years of Experience', value: 15, suffix: '+' },
+    { label: 'Years of Practice', value: 15, suffix: '+' },
     { label: 'Projects Completed', value: 120, suffix: '+' },
     { label: 'Client Satisfaction', value: 98, suffix: '%' },
     { label: 'Industry Awards', value: 25, suffix: '+' },
   ];
 
   return (
-    <section className="section-padding bg-rofech-black text-white">
+    <section className="bg-rofech-ink text-rofech-limewash border-t border-rofech-limewash/10">
       <div className="section-container">
-        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="py-12 md:py-16 px-4 border-rofech-limewash/10 [&:not(:nth-child(2n))]:border-r md:[&:not(:nth-child(2n))]:border-r-0 md:[&:not(:last-child)]:border-r text-center md:text-left"
             >
-              <div className="font-heading font-bold text-4xl md:text-6xl text-rofech-yellow mb-2">
-                <CountUp end={stat.value} duration={2} isInView={isInView} />
+              <div className="font-heading text-4xl md:text-5xl text-rofech-brass-light mb-2">
+                <CountUp end={stat.value} duration={1.8} isInView={isInView} />
                 {stat.suffix}
               </div>
-              <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+              <div className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-stone/70">
                 {stat.label}
               </div>
             </motion.div>
@@ -76,4 +76,3 @@ const CountUp = ({ end, duration, isInView }: { end: number; duration: number; i
 };
 
 export default TrustIndicators;
-

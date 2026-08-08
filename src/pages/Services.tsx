@@ -4,98 +4,107 @@ import { services } from '../data/services';
 import SectionTitle from '../components/common/SectionTitle';
 import Button from '../components/common/Button';
 
+const disciplineCode: Record<string, string> = {
+  'architectural-design': 'A',
+  '3d-visualization': 'V',
+  'development-construction': 'DC',
+  'interior-coordination': 'ID',
+};
+
 const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-24">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-rofech-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80 z-10" />
-        <div className="relative z-20 text-center text-white section-container">
+      <section className="py-20 md:py-28 bg-rofech-ink text-rofech-limewash">
+        <div className="section-container">
+          <p className="eyebrow-on-dark mb-5">Capabilities</p>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-heading font-bold mb-4"
-          >
-            Our <span className="text-rofech-yellow">Services</span>
-          </motion.h1>
-          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+            transition={{ duration: 0.7 }}
+            className="mb-5 text-rofech-limewash"
           >
-            Comprehensive architectural solutions from concept to completion
+            Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-lg md:text-xl text-rofech-stone max-w-2xl"
+          >
+            Architectural solutions from concept to completion, held under
+            one studio.
           </motion.p>
         </div>
       </section>
 
       {/* Services Overview */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-rofech-limewash">
         <div className="section-container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mb-20">
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-xl text-gray-700 leading-relaxed"
+              className="text-xl text-rofech-ink-soft leading-relaxed"
             >
-              At ROFECH, we offer a complete suite of architectural and design services tailored to bring
-              your vision to life. From initial concept to final construction, our team guides you through
-              every step of the process with expertise and attention to detail.
+              Architectural and development services delivered by a single,
+              licensed team — from concept design through permitting,
+              construction administration, and handover.
             </motion.p>
           </div>
 
           {/* Detailed Services */}
-          <div ref={ref} className="space-y-16">
+          <div ref={ref} className="space-y-24">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
                 {/* Service Info */}
                 <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 border-l-4 border-rofech-yellow pl-4">{service.title}</h2>
-                  <p className="text-gray-700 leading-relaxed mb-6">{service.description}</p>
+                  <span className="font-mono text-xs font-medium text-rofech-ink border border-rofech-brass bg-rofech-brass/15 w-9 h-9 flex items-center justify-center mb-6">
+                    {disciplineCode[service.id] ?? String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h2 className="text-3xl md:text-4xl mb-4">{service.title}</h2>
+                  <p className="text-rofech-ink-soft leading-relaxed mb-8">{service.description}</p>
 
                   {/* Process Steps */}
-                  <div className="space-y-3">
-                    <h3 className="font-heading font-bold text-lg mb-4">Our Process:</h3>
-                    {service.process.map((step, stepIndex) => (
-                      <motion.div
-                        key={stepIndex}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                        transition={{ duration: 0.4, delay: index * 0.2 + stepIndex * 0.1 }}
-                        className="flex items-start gap-3"
-                      >
-                        <span className="flex-shrink-0 w-6 h-6 bg-rofech-yellow flex items-center justify-center text-rofech-black font-bold text-sm">
-                          {stepIndex + 1}
-                        </span>
-                        <span className="text-gray-700">{step}</span>
-                      </motion.div>
-                    ))}
+                  <div>
+                    <p className="eyebrow mb-5">Process</p>
+                    <div>
+                      {service.process.map((step, stepIndex) => (
+                        <div
+                          key={stepIndex}
+                          className="flex items-start gap-4 py-3 border-t border-rofech-ink/10 last:border-b"
+                        >
+                          <span className="font-mono text-xs text-rofech-concrete mt-0.5">
+                            {String(stepIndex + 1).padStart(2, '0')}
+                          </span>
+                          <span className="text-rofech-ink-soft text-sm">{step}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Service Image */}
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <div className="relative h-[400px] overflow-hidden">
+                  <div className="frame aspect-[4/3]">
                     <img
                       src={`/images/pic-${(index % 3) + 1}-rofech.jpg`}
                       alt={service.title}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 border-4 border-rofech-yellow opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                    <div className="corner-tl" />
+                    <div className="corner-br" />
                   </div>
                 </div>
               </motion.div>
@@ -105,74 +114,128 @@ const Services = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-rofech-paper">
         <div className="section-container">
           <SectionTitle
-            title="Why Choose ROFECH"
-            subtitle="What sets us apart in architectural design and development"
+            eyebrow="Why Rofech"
+            title="What sets the practice apart"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-rofech-ink/10">
             {[
               {
-                title: 'Experienced Team',
-                description: 'Over 15 years of expertise in tropical modern architecture'
+                title: 'PRC-Licensed Team',
+                description: 'Every drawing set is designed and sealed by registered architects, not delegated to unlicensed drafters.'
               },
               {
-                title: 'Client-Centered',
-                description: 'Your vision and satisfaction drive every decision we make'
+                title: 'Single Point of Accountability',
+                description: 'One firm carries the project from schematic design through construction — no handoff between separate design and build teams.'
               },
               {
-                title: 'Sustainable Design',
-                description: 'Eco-friendly materials and energy-efficient solutions'
+                title: 'Climate-Responsive Design',
+                description: 'Passive cooling, orientation, and material choices calculated for Philippine heat and humidity, not applied as an afterthought.'
               },
               {
-                title: 'Full-Service',
-                description: 'From design to construction, we handle it all'
+                title: 'Code-Compliant Documentation',
+                description: 'Construction drawings are prepared to LGU permitting standard from the outset, reducing delays at application.'
               },
               {
-                title: 'Quality Assurance',
-                description: 'Rigorous standards ensure exceptional results'
+                title: 'On-Site Construction Administration',
+                description: 'Regular site visits through the build to verify the work matches the approved drawings.'
               },
               {
-                title: 'Timely Delivery',
-                description: 'Projects completed on schedule and within budget'
+                title: 'Fixed-Scope Proposals',
+                description: 'Defined deliverables and timelines agreed before design begins, with change orders documented in writing.'
               }
             ].map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 hover:shadow-lg transition-shadow duration-300 border-l-4 border-transparent hover:border-rofech-yellow"
+                className="bg-rofech-paper p-7"
               >
-                <h3 className="font-heading font-bold text-xl mb-3">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="font-heading text-xl mb-3">{item.title}</h3>
+                <p className="text-rofech-ink-soft text-sm leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="section-padding bg-rofech-limewash">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14">
+            <div className="lg:col-span-4">
+              <p className="eyebrow mb-4">Common Questions</p>
+              <h2 className="mb-4">Before you reach out</h2>
+              <p className="text-rofech-ink-soft leading-relaxed">
+                A few things prospective clients usually ask before their
+                first consultation.
+              </p>
+            </div>
+
+            <div className="lg:col-span-8">
+              {[
+                {
+                  q: 'How long does permitting typically take?',
+                  a: 'For a standard residential project, LGU permit processing runs roughly 6–10 weeks after complete document submission. We prepare drawings to submission standard from the start to avoid resubmission delays.',
+                },
+                {
+                  q: 'Do you handle projects outside Las Piñas?',
+                  a: 'Yes. We regularly take on projects across Luzon and coordinate site visits accordingly. Travel and site-supervision terms are scoped into the proposal.',
+                },
+                {
+                  q: 'Can you work with a contractor we already have?',
+                  a: 'We can design for an external contractor and provide construction-administration oversight, or handle design and build together as one scope — whichever suits the project.',
+                },
+                {
+                  q: 'How is the fee structured?',
+                  a: 'Typically as a percentage of construction cost, billed in phases tied to design milestones (schematic design, design development, construction documents, construction administration). We confirm the structure in writing before design begins.',
+                },
+                {
+                  q: 'What do you need from us to start?',
+                  a: 'A site (owned or under negotiation), a rough program and budget range, and your availability for an initial site visit and briefing. We can work with an informal wish list — you don\'t need finished requirements.',
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.q}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.06 }}
+                  viewport={{ once: true }}
+                  className="py-6 border-t border-rofech-ink/10 last:border-b"
+                >
+                  <h3 className="font-heading text-lg mb-2">{item.q}</h3>
+                  <p className="text-rofech-ink-soft text-sm leading-relaxed">{item.a}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="section-padding bg-rofech-black text-white">
+      <section className="section-padding bg-rofech-ink text-rofech-limewash">
         <div className="section-container text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Let's Build Something <span className="text-rofech-yellow">Amazing</span>
+            <h2 className="mb-6 text-rofech-limewash">
+              Let's build something <span className="italic text-rofech-brass-light">worth living in.</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Ready to start your architectural journey? Get in touch with our team to discuss your project.
+            <p className="text-lg text-rofech-stone mb-10 max-w-xl mx-auto">
+              Ready to start your architectural journey? Get in touch to
+              discuss your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button to="/contact">Start a Project</Button>
-              <Button to="/portfolio" variant="secondary">View Our Work</Button>
+              <Button to="/contact" variant="onDark">Start a Project</Button>
+              <Button to="/portfolio" variant="ghostDark">View Our Work</Button>
             </div>
           </motion.div>
         </div>
@@ -182,4 +245,3 @@ const Services = () => {
 };
 
 export default Services;
-
