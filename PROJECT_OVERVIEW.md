@@ -440,7 +440,7 @@ hotfix/*     # Urgent fixes
 ### Business Inquiries
 - Email: info@rofech.com
 - Phone: +63 912 345 6789
-- Location: Las Piñas, Philippines
+- Location: Metro Manila, Philippines
 
 ---
 

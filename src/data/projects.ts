@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: 'villa-37',
     name: 'Villa 37',
     category: 'Residential',
-    location: 'Las Piñas, Philippines',
+    location: 'Metro Manila, Philippines',
     year: 2024,
     area: '450 sqm',
     type: 'Luxury Residential',

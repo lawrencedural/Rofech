@@ -184,7 +184,7 @@ const Services = () => {
                   a: 'For a standard residential project, LGU permit processing runs roughly 6–10 weeks after complete document submission. We prepare drawings to submission standard from the start to avoid resubmission delays.',
                 },
                 {
-                  q: 'Do you handle projects outside Las Piñas?',
+                  q: 'Do you handle projects outside Metro Manila?',
                   a: 'Yes. We regularly take on projects across Luzon and coordinate site visits accordingly. Travel and site-supervision terms are scoped into the proposal.',
                 },
                 {

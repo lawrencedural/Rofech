@@ -333,7 +333,7 @@ const Contact = () => {
                 <div className="space-y-5">
                   <div className="border-b border-rofech-ink/10 pb-4">
                     <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete block mb-1">Office</span>
-                    <span className="text-rofech-ink">Metrocor Subdivision, Marcos Alvarez Ave, Talon, Las Piñas City, Las Piñas</span>
+                    <span className="text-rofech-ink">Metrocor Subdivision, Marcos Alvarez Ave, Talon, Las Piñas City, Metro Manila</span>
                   </div>
                   <div className="border-b border-rofech-ink/10 pb-4">
                     <span className="font-mono text-[11px] uppercase tracking-widest2 text-rofech-concrete block mb-1">Email</span>

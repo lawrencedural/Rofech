@@ -34,7 +34,7 @@ const BrandSeal = ({ className = '', variant = 'ink' }: BrandSealProps) => {
       />
       <text fontSize="9.5" letterSpacing="2.5" fill={stroke} fontFamily="'IBM Plex Mono', monospace">
         <textPath href="#sealTextPathBottom2" startOffset="2">
-          EST. 2009 · Las Piñas, PH
+          EST. 2009 · METRO MANILA, PH
         </textPath>
       </text>
       <line x1="46" y1="80" x2="114" y2="80" stroke={stroke} strokeWidth="0.75" />
