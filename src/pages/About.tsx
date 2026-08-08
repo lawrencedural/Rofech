@@ -62,7 +62,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-rofech-ink text-rofech-limewash">
         <div className="section-container">
-          <p className="eyebrow-on-dark mb-5">Est. 2009 — Metro Manila, PH</p>
+          <p className="eyebrow-on-dark mb-5">Est. 2009 — Las Piñas, PH</p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

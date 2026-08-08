@@ -6,7 +6,7 @@ interface Credential {
 const credentials: Credential[] = [
   { label: 'PRC-Registered Architects', detail: 'Licensed under RA 9266' },
   { label: 'UAP Member Firm', detail: 'United Architects of the Philippines' },
-  { label: 'DTI-Registered Practice', detail: 'Metro Manila, Philippines' },
+  { label: 'DTI-Registered Practice', detail: 'Las Piñas, Philippines' },
   { label: 'Full Permitting Service', detail: 'Design through occupancy' },
 ];
 

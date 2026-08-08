@@ -18,7 +18,7 @@ const Footer = () => {
               <span className="font-heading font-medium text-lg">ROFECH</span>
             </div>
             <p className="text-rofech-stone/80 text-sm leading-relaxed max-w-sm">
-              Design and development studio in Metro Manila, producing tropical
+              Design and development studio in Las Piñas, producing tropical
               modern architecture from first sketch to handover.
             </p>
           </div>
@@ -58,7 +58,7 @@ const Footer = () => {
           <div>
             <h3 className="eyebrow-light mb-5">Studio</h3>
             <ul className="space-y-3 text-sm text-rofech-stone/80">
-              <li>Metro Manila, Philippines</li>
+              <li>Las Piñas, Philippines</li>
               <li>
                 <a href="mailto:info@rofech.com" className="hover:text-rofech-brass transition-colors block">
                   info@rofech.com

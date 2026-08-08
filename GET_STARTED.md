@@ -96,7 +96,7 @@ Edit `src/pages/Contact.tsx`:
 // Update these:
 - Email: info@rofech.com → your@email.com
 - Phone: +63 912 345 6789 → your number
-- Location: Metro Manila → your location
+- Location: Las Piñas → your location
 - Business hours → your hours
 ```
 
@@ -115,7 +115,7 @@ Edit `src/data/projects.ts`:
 {
   id: 'villa-37',
   name: 'Villa 37',          // Change project name
-  location: 'Metro Manila',  // Update location
+  location: 'Las Piñas',  // Update location
   year: 2024,                // Update year
   area: '450 sqm',          // Update area
   description: '...',        // Update description

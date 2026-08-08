@@ -4,7 +4,7 @@ import Button from '../common/Button';
 const stats = [
   { label: 'Founded', value: '2009' },
   { label: 'Projects delivered', value: '120+' },
-  { label: 'Based in', value: 'Metro Manila, PH' },
+  { label: 'Based in', value: 'Las Piñas, PH' },
 ];
 
 const Hero = () => {
@@ -19,7 +19,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="eyebrow-on-dark mb-6"
           >
-            Rofech Design &amp; Development — PRC-Registered — Metro Manila, PH
+            Rofech Design &amp; Development — PRC-Registered — Las Piñas, PH
           </motion.p>
 
           <motion.h1
@@ -89,7 +89,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-rofech-ink/70 via-transparent to-transparent lg:bg-gradient-to-l lg:from-rofech-ink/0 lg:via-transparent lg:to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 lg:left-8 lg:right-auto">
               <p className="font-mono text-[10px] uppercase tracking-widest2 text-rofech-limewash/80 bg-rofech-ink/60 backdrop-blur-sm inline-block px-3 py-1.5">
-                Villa 37 — Metro Manila — 2024
+                Villa 37 — Las Piñas — 2024
               </p>
             </div>
           </motion.div>
